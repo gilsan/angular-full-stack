@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var invoice_1 = require("./resources/invoice");
+var client_1 = require("./resources/client");
+var user_1 = require("./resources/user");
+var auth_1 = require("./resources/auth");
+exports.restRouter = express.Router();
+exports.restRouter.use('/clients', client_1.clientRouter);
+exports.restRouter.use('/invoices', invoice_1.invoiceRouter);
+exports.restRouter.use('/users', user_1.userRouter);
+exports.restRouter.use('/auth', auth_1.authRouter);

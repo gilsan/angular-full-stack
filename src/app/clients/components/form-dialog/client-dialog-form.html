@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+
+  <form class="form-container" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div>
+
+        <mat-form-field color="accent">
+            <input matInput formControlName="lastName" placeholder="성씨">
+            <mat-error *ngIf="clientForm.controls.lastName.invalid && clientForm.controls.lastName.touched">이난은 필수 입니다.</mat-error>
+        </mat-form-field>
+        <mat-form-field  color="accent">
+            <input matInput formControlName="firstName"  placeholder="이름">
+            <mat-error *ngIf="clientForm.controls.firstName.invalid && clientForm.controls.firstName.touched">이난은 필수 입니다.</mat-error>
+        </mat-form-field>
+        <mat-form-field  color="accent">
+            <input matInput formControlName="email"  placeholder="이메일">
+            <mat-error *ngIf="clientForm.controls.email.invalid && clientForm.controls.email.touched">이난은 필수 입니다.</mat-error>
+        </mat-form-field>
+      </div>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">취소</button>
+  <button mat-button [mat-dialog-close]="clientForm.value" cdkFocusInitial>확인</button>
+</div>

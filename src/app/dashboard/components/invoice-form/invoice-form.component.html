@@ -1,0 +1,50 @@
+<mat-card>
+  <div>
+    <p>{{title}}</p>
+  </div>
+<form class="example-container" [formGroup]="form"  novalidate (ngSubmit)="onSubmit()">
+  <mat-form-field color="accent">
+    <input matInput placeholder="품목" formControlName="item">
+    <mat-error *ngIf="form.controls.item.invalid && form.controls.item.touched">품목난은 필수 입니다.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="수량" formControlName="qty">
+    <mat-error *ngIf="form.controls.qty.invalid  && form.controls.qty.touched">수량난은 필수 입니다.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field  color="accent">
+    <input matInput [matDatepicker]="date" placeholder="날자선택" formControlName="date">
+    <mat-error *ngIf="form.controls.date.invalid  && form.controls.date.touched">날자난은 필수 입니다.</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+    <mat-datepicker #date></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field  color="accent">
+    <input matInput [matDatepicker]="due" placeholder="날자선택" formControlName="due">
+    <mat-error *ngIf="form.controls.due.invalid  && form.controls.due.touched">날자난은 필수 입니다.</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="due"></mat-datepicker-toggle>
+    <mat-datepicker #due></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field  color="accent">
+    <input matInput placeholder="세금"  formControlName="tax" color="accent">
+  </mat-form-field>
+
+  <mat-form-field  color="accent">
+    <input matInput placeholder="요율"  formControlName="rate">
+  </mat-form-field>
+  <mat-form-field color="primary">
+  <mat-select placeholder="Favorite Client" formControlName = "client">
+    <mat-option *ngFor="let c of clients" [value]="c._id">
+      {{c.lastName}}  {{c.firstName}} {{c.email}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  <div>
+    <button mat-raised-button [disabled]="!form.valid" type="submit" color="accent">저장</button>
+    <button mat-raised-button   color="danger" type="reset" (click)="cancel()">취소</button>
+  </div>
+
+</form>
+</mat-card>

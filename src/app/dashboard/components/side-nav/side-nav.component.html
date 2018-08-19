@@ -1,0 +1,23 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav class="app-sidenav mat-elevation-z10"
+  opened="true" mode="side" #sidenav>
+    <mat-toolbar color="accent">메 뉴</mat-toolbar>
+    <mat-list>
+
+      <a mat-list-item [routerLink]="link.url"  *ngFor="let link of links">
+         {{link.name}}
+      </a>
+
+
+
+
+    </mat-list>
+  </mat-sidenav>
+  
+  <div class="app-sidenav-content">
+    <app-toolbar (toggleSidenav)="sidenav.open()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>

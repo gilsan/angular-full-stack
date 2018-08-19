@@ -1,0 +1,48 @@
+<mat-card>
+
+   <mat-card-title>
+    {{invoice.item}}
+   </mat-card-title>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td class="column-title">날자:</td>
+        <td>{{invoice.date | date}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">기한:</td>
+        <td>{{invoice.due | date}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">수량:</td>
+        <td>{{invoice.qty}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">등급:</td>
+        <td>{{invoice.rate}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">세금:</td>
+        <td>{{invoice.tax}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">수신자명:</td>
+        <td>{{invoice.client.lastName}} {{invoice.client.firstName}}</td>
+      </tr>
+      <tr>
+         <td class="column-title">이메일:</td>
+        <td>{{invoice.client.email}}</td>
+      </tr>
+      <tr>
+        <td class="column-title">총액:</td>
+       <td>{{total}}</td>
+     </tr>
+    </table>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-button mat-raised-button color="accent" [routerLink]="['/dashboard','invoices', invoice._id]">편집</button>
+      <button mat-button mat-raised-button color="primary" (click) = "downloadHandler(invoice._id)">내려받기</button>
+  </mat-card-actions>
+  <mat-progress-bar *ngIf="isResultsLoading" mode="indeterminate" color="accent"></mat-progress-bar>
+</mat-card>
+
